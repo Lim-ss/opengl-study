@@ -110,6 +110,9 @@ int main(void)
     if (!glfwInit())
         return -1;
 
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
@@ -140,9 +143,13 @@ int main(void)
         2, 3, 0
     };
 
-    unsigned int buffer;//VBO,aka.Vertex Buffer Object
-    glGenBuffers(1, &buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    unsigned int vao;//Verrex Array Object
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+    unsigned int vbo;//VBO,aka.Vertex Buffer Object
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), positions, GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (const void*)0);
@@ -161,6 +168,11 @@ int main(void)
     ASSERT(location != -1);
     glUniform4f(location, 0.2f, 0.3f, 0.8f, 1.0f);
 
+    //unbind all thing to test the vao
+    glUseProgram(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+    glBindVertexArray(0);
 
     float r = 0.0f;
     float increment = 0.05f;
@@ -170,11 +182,14 @@ int main(void)
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //glDrawArrays(GL_TRIANGLES, 0, 3);//draw with position directly
-
+        glUseProgram(shader);//step.1
         glUniform4f(location, r, 0.3f, 0.8f, 1.0f);
+
+        glBindVertexArray(vao);//step.2
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);//step.3
+
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);//draw with index(indices)
-        //GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));//use GLCall to debug
+        //glDrawArrays(GL_TRIANGLES, 0, 3);//draw with position directly
         
         
         if (r > 1.0f)
