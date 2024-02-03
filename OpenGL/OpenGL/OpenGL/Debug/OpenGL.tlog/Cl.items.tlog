@@ -1,1 +1,5 @@
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Application.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Application.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\IndexBuffer.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\IndexBuffer.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Renderer.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Renderer.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\VertexArray.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\VertexArray.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\VertexBuffer.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\VertexBuffer.obj
