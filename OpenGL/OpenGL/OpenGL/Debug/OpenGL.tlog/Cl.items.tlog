@@ -2,5 +2,7 @@ C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Application.cpp;C:\
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\IndexBuffer.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\IndexBuffer.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Renderer.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Renderer.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Shader.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Shader.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Texture.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Texture.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\vendor\stb_image\stb_image.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\stb_image.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\VertexArray.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\VertexArray.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\VertexBuffer.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\VertexBuffer.obj

@@ -12,6 +12,7 @@
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 #include "Shader.h"
+#include "Texture.h"
 
 int main(void)
 {
@@ -44,15 +45,19 @@ int main(void)
 
     {//make a scope to clean the vartables in stack,otherwise somethings go wrong after call glfwTerminate();
         float positions[] = {
-            -0.5f, -0.5f,
-             0.5f, -0.5f,
-             0.5f,  0.5f,
-            -0.5f,  0.5f
+           //x   , y    , u   , v
+            -0.5f, -0.5f, 0.0f, 0.0f, // 0
+             0.5f, -0.5f, 1.0f, 0.0f, // 1
+             0.5f,  0.5f, 1.0f, 1.0f, // 2
+            -0.5f,  0.5f, 0.0f, 1.0f  // 3
         };
         unsigned int indices[] = {
             0, 1, 2,
             2, 3, 0
         };
+
+        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+        GLCall(glEnable(GL_BLEND));
 
         //unsigned int vao;//Verrex Array Object
         //glGenVertexArrays(1, &vao);
@@ -63,11 +68,12 @@ int main(void)
         //glgenbuffers(1, &vbo);
         //glbindbuffer(gl_array_buffer, vbo);
         //glbufferdata(gl_array_buffer, 8 * sizeof(float), positions, gl_static_draw);
-        VertexBuffer vb(positions, 8 * sizeof(float));
+        VertexBuffer vb(positions, 16 * sizeof(float));
 
         //glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (const void*)0);
         //glEnableVertexAttribArray(0);
         VertexBufferLayout layout;
+        layout.Push<float>(2);
         layout.Push<float>(2);
         va.AddBuffer(vb, layout);
 
@@ -87,6 +93,10 @@ int main(void)
         //ASSERT(location != -1);
         //glUniform4f(location, 0.2f, 0.3f, 0.8f, 1.0f);
         shader.SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);
+
+        Texture texture("res/textures/red.png");
+        texture.Bind();
+        shader.SetUniform1i("u_Texture", 0);
 
         //unbind all thing
         shader.Unbind();
