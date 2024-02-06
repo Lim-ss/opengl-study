@@ -6,9 +6,11 @@ layout(location = 1) in vec2 texCoord;
 
 out vec2 v_TexCoord;
 
+uniform  mat4 u_MVP;
+
 void main()
 {
-    gl_Position = position;
+    gl_Position = u_MVP * position;
     v_TexCoord = texCoord;
 };
 
@@ -16,11 +18,10 @@ void main()
 #shader fragment
 #version 330 core
 
-in vec2 v_TexCoord;
-
 layout(location = 0) out vec4 color;
 
-uniform vec4 u_Color;
+in vec2 v_TexCoord;
+
 uniform sampler2D u_Texture;
 
 void main()
