@@ -6,3 +6,4 @@ OpenGL/OpenGL/OpenGL/Release/
 OpenGL/OpenGL/x64/
 OpenGL/OpenGL/OpenGL/x64/
 *.user
+OpenGL/OpenGL/OpenGL/imgui.ini

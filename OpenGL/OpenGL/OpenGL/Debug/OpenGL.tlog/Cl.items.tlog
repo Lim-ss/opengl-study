@@ -2,6 +2,9 @@ C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Application.cpp;C:\
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\IndexBuffer.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\IndexBuffer.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Renderer.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Renderer.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Shader.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Shader.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\tests\Test.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Test.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\tests\TestClearColor.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\TestClearColor.obj
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\tests\TestTexture2D.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\TestTexture2D.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Texture.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\Texture.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\vendor\glm\detail\glm.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\glm.obj
 C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\vendor\imgui\imgui.cpp;C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\Debug\imgui.obj
