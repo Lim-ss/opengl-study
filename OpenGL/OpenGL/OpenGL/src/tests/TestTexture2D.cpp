@@ -5,24 +5,30 @@
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 
+#include "GLFW/glfw3.h"
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
 namespace test {
 
     TestTexture2D::TestTexture2D()
-        :m_Translation(0, 0, 0), m_IO(ImGui::GetIO()),
+        :m_Translation(0, 0, 0),
+        m_RotationAngle(0),
+        m_Scale(1, 1, 1),
+        m_IO(ImGui::GetIO()),
         m_Proj(glm::ortho(0.0f, 800.0f, 0.0f, 600.0f, -1.0f, 1.0f)),
         m_View(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))),
         m_Model(glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0))),
-        m_MVP(m_Proj* m_View* m_Model)
+        m_MVP(m_Proj* m_View* m_Model),
+        m_IfWireframeMode(false)
 	{
         float positions[] = {
             //x   , y    , u   , v
-              0.0f,   0.0f,   0.0f, 0.0f, // 0
-              200.0f, 0.0f,   1.0f, 0.0f, // 1
-              200.0f, 200.0f, 1.0f, 1.0f, // 2
-              0.0f,   200.0f, 0.0f, 1.0f  // 3
+              -100.0f, -100.0f, 0.0f, 0.0f, // 0
+               100.0f, -100.0f, 1.0f, 0.0f, // 1
+               100.0f,  100.0f, 1.0f, 1.0f, // 2
+              -100.0f,  100.0f, 0.0f, 1.0f  // 3
         };
         unsigned int indices[] = {
             0, 1, 2,
@@ -72,7 +78,7 @@ namespace test {
         //shader.SetUniform4f("u_Color", 0.2f, 0.3f, 0.8f, 1.0f);
 
        // Texture texture("res/textures/red.png");
-        m_Texture = std::make_unique<Texture>("res/textures/red.png");
+        m_Texture = std::make_unique<Texture>("res/textures/red.jpg");
         m_Texture->Bind();
         m_Shader->SetUniform1i("u_Texture", 0);
 
@@ -95,7 +101,40 @@ namespace test {
 
 	void TestTexture2D::OnRender()
 	{
+        {
+            //change the proj matrix because the change of window size
+            int width, height;
+            GLFWwindow* window = glfwGetCurrentContext();
+            glfwGetWindowSize(window, &width, &height);
+            m_Proj = glm::ortho<float>(0.0f, (float)width, 0.0f, (float)height, -1.0f, 1.0f);
+
+            // Wireframe Mode
+            if (m_IfWireframeMode)
+                glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+            else
+                glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+            //processInput
+            if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+                m_Translation.x += 5;
+            if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+                m_Translation.x -= 5;
+            if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+                m_Translation.y += 5;
+            if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+                m_Translation.y -= 5;
+            if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+                m_RotationAngle += 5;
+            if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+                m_RotationAngle -= 5;
+            if (glfwGetKey(window, GLFW_KEY_Z) == GLFW_PRESS)
+                m_Scale.x = m_Scale.y -= 0.05f;
+            if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+                m_Scale.x = m_Scale.y += 0.05f;
+        }
         m_Model = glm::translate(glm::mat4(1.0f), m_Translation);
+        m_Model = glm::rotate(m_Model, glm::radians(m_RotationAngle), glm::vec3(0.0, 0.0, 1.0));
+        m_Model = glm::scale(m_Model, m_Scale);
         m_MVP = m_Proj * m_View * m_Model;
         m_Shader->SetUniformMat4f("u_MVP", m_MVP);
 
@@ -128,15 +167,14 @@ namespace test {
         
 
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
-        ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
 
-        ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+        ImGui::Text("Use diretion key to control the object");               // Display some text (you can use a format strings too)
 
         ImGui::SliderFloat3("Translation", &m_Translation.x, 0.0f, 600.0f);
 
+        ImGui::Checkbox("Wireframe Mode", &m_IfWireframeMode);
+
         ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / m_IO.Framerate, m_IO.Framerate);
 
-        ImGui::End();
-        
 	}
 }

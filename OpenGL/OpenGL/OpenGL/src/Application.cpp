@@ -25,6 +25,17 @@
 #include "TestClearColor.h"
 #include "TestTexture2D.h"
 
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);
+}
+
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    // process key input
+    //std::cout << "Key: " << key << std::endl;
+}
+
 int main(void)
 {
     GLFWwindow* window;
@@ -44,6 +55,8 @@ int main(void)
         glfwTerminate();
         return -1;
     }
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    glfwSetKeyCallback(window, keyCallback);
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);

@@ -23,6 +23,8 @@ namespace test {
 		void OnImguiRender() override;
 	private:
 		glm::vec3 m_Translation;
+		float m_RotationAngle;
+		glm::vec3 m_Scale;
 		glm::mat4 m_Proj;
 		glm::mat4 m_View;
 		glm::mat4 m_Model;
@@ -36,5 +38,6 @@ namespace test {
 		std::unique_ptr<Texture> m_Texture;
 
 		ImGuiIO& m_IO;
+		bool m_IfWireframeMode;
 	};
 }

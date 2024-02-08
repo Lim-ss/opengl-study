@@ -28,3 +28,4 @@ glm中有一个glm.cppm文件编译通过不了，删掉即可
 
 imgui默认用gl3w而不是glew，但是似乎imgui里面以及包含gl3w了（不确定），在其他地方照样用glew是没问题的
 
+stbi_load()和glTexImage2D()的4字节对齐机制很奇怪，有时候匹配不上，如果发生越界可以加上glPixelStorei(GL_UNPACK_ALIGNMENT, 1)试试
