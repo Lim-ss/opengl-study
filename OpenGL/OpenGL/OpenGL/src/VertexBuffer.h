@@ -1,5 +1,8 @@
 #pragma once
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
 class VertexBuffer
 {
 private:
@@ -10,4 +13,19 @@ public:
 
 	void Bind() const;
 	void Unbind() const;
+
+	struct vertex
+	{
+		glm::vec3 position;
+		glm::vec3 color;
+		glm::vec2 textureCoordinate;
+		float textureID;
+
+		inline vertex(glm::vec3 position, glm::vec3 color, glm::vec2 textureCoordinate, float textureID)
+			: position(position), color(color), textureCoordinate(textureCoordinate), textureID(textureID)
+		{}
+		inline vertex()
+			: position(0), color(0), textureCoordinate(0), textureID(0)
+		{}
+	};
 };

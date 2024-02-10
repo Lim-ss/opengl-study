@@ -5,6 +5,9 @@
 #include <functional>
 #include <iostream>
 
+#include "GL/glew.h"
+#include "GLFW/glfw3.h"
+
 namespace test {
 	
 	class Test
@@ -16,6 +19,7 @@ namespace test {
 		virtual void OnUpdate(float deltaTime) {}
 		virtual void OnRender() {}
 		virtual void OnImguiRender() {}
+		virtual void CursorPosCallback(GLFWwindow* window, double xpos, double ypos) {}
 	};
 
 	class TestMenu : public Test

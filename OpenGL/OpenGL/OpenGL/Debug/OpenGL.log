@@ -1,2 +1,10 @@
-﻿  TestTexture2D.cpp
+﻿  Application.cpp
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Application.cpp(116,32): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\Application.cpp(101,18): warning C4101: 'renderer': unreferenced local variable
+  Camera.cpp
+  Test3D.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+glew32s.lib(glew.obj) : warning LNK4099: PDB '' was not found with 'glew32s.lib(glew.obj)' or at ''; linking object as if no debug info
   OpenGL.vcxproj -> C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\Debug\OpenGL.exe

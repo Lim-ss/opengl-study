@@ -28,4 +28,18 @@ glm中有一个glm.cppm文件编译通过不了，删掉即可
 
 imgui默认用gl3w而不是glew，但是似乎imgui里面以及包含gl3w了（不确定），在其他地方照样用glew是没问题的
 
-stbi_load()和glTexImage2D()的4字节对齐机制很奇怪，有时候匹配不上，如果发生越界可以加上glPixelStorei(GL_UNPACK_ALIGNMENT, 1)试试
+stbi_load()和glTexImage2D()的4字节对齐机制很奇怪，有时候匹配不上，如果发生越界可以加上glPixelStorei(GL_UNPACK_ALIGNMENT, 1)试试。另外，发现有些不标准jpg格式的图片加载失败，可以用python先转一下。
+
+glfwSetCursorPosCallback(window, CursorPosCallback)这个用于设置光标位置回调函数的函数必须在imgui初始化之前调用，否则如果先初始化imgui再调用这个函数，就会覆盖掉imgui内部的鼠标处理逻辑，导致imgui以一定的形式失效，即使再调用glfwSetCursorPosCallback(window, nullptr)来取消掉自己的光标回调函数也不能修复。另外，一般在处理鼠标事件时，都应该先询问imgui是否需要处理鼠标逻辑，避免冲突，为了能够在不同的test生效时调用不同的回调函数，我在程序里又加了一层，由外层callback调用currentTest中的callback（用了动态绑定）。
+
+~~~c++
+void CursorPosCallback(GLFWwindow* window, double xpos, double ypos)
+{
+    ImGuiIO& io = ImGui::GetIO();
+    if (!io.WantCaptureMouse)
+    {
+        currentTest->CursorPosCallback(window, xpos, ypos);
+    }
+}
+~~~
+

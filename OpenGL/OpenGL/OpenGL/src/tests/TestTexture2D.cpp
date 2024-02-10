@@ -69,7 +69,7 @@ namespace test {
         //unsigned int shader = createshader(source.vectexsource, source.fragmentsource);
         //gluseprogram(shader);
         //Shader shader("res/shaders/Basic.shader");
-        m_Shader = std::make_unique<Shader>("res/shaders/Basic.shader");
+        m_Shader = std::make_unique<Shader>("res/shaders/TestTexture2D.shader");
         m_Shader->Bind();
 
         //int location = glGetUniformLocation(shader, "u_Color");
