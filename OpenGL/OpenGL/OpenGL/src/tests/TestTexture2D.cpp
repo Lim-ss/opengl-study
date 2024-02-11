@@ -94,7 +94,7 @@ namespace test {
 
 	}
 
-	void TestTexture2D::OnUpdate(float deltaTime)
+	void TestTexture2D::OnUpdate(double deltaTime)
 	{
 
 	}
@@ -157,7 +157,7 @@ namespace test {
         //glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);//draw with index(indices)
         //glDrawArrays(GL_TRIANGLES, 0, 3);//draw with position directly
         
-        renderer.Draw(*m_VAO, *m_IBO, *m_Shader);
+        renderer.Draw(*m_VAO, *m_IBO, *m_Shader, 6);
 		
 	}
 

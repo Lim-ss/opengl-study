@@ -33,10 +33,13 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    // process key input
-    //std::cout << "Key: " << key << std::endl;
+    ImGuiIO& io = ImGui::GetIO();
+    if (!io.WantCaptureMouse)
+    {
+        currentTest->KeyCallback(window, key, scancode, action, mods);
+    }
 }
 
 void CursorPosCallback(GLFWwindow* window, double xpos, double ypos)
@@ -69,7 +72,7 @@ int main(void)
     }
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-    glfwSetKeyCallback(window, keyCallback);
+    glfwSetKeyCallback(window, KeyCallback);
     glfwSetCursorPosCallback(window, CursorPosCallback);
 
     /* Make the window's context current */
@@ -103,8 +106,8 @@ int main(void)
         test::TestMenu* testMenu = new test::TestMenu(currentTest);
         currentTest = testMenu;
 
-        float deltaTime = 0.0f;
-        float lastFrame = 0.0f;
+        double deltaTime = 0.0f;
+        double lastFrame = 0.0f;
 
         testMenu->RegisterTest<test::TestClearColor>("Clear Color");
         testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
@@ -113,7 +116,7 @@ int main(void)
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
-            float currentFrame = glfwGetTime();
+            double currentFrame = glfwGetTime();
             deltaTime = currentFrame - lastFrame;
             lastFrame = currentFrame;
 

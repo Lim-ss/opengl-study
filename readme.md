@@ -43,3 +43,4 @@ void CursorPosCallback(GLFWwindow* window, double xpos, double ypos)
 }
 ~~~
 
+先把所有纹理加载完再进行纹理槽的绑定，因为加载纹理的时候在调用glBindTexture(GL_TEXTURE_2D, ID)之前不会调用GLCall(glActiveTexture(GL_TEXTURE0 + slot))，所以会把上一个绑定的纹理顶掉。

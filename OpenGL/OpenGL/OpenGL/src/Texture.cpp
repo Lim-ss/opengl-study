@@ -27,8 +27,6 @@ Texture::Texture(const std::string& path)
 	//glPixelStorei(GL_UNPACK_ALIGNMENT, 1);//if is not 4-byte alignment and use GL_RGB
 
 	GLCall(glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_Width, m_Heigth, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_LocationBuffer));
-
-	GLCall(glBindTexture(GL_TEXTURE_2D, 0));
 	
 	if (m_LocationBuffer)
 		stbi_image_free(m_LocationBuffer);

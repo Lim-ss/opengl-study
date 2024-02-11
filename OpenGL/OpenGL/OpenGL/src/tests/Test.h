@@ -16,10 +16,11 @@ namespace test {
 		Test() {}
 		virtual ~Test() {}
 
-		virtual void OnUpdate(float deltaTime) {}
+		virtual void OnUpdate(double deltaTime) {}
 		virtual void OnRender() {}
 		virtual void OnImguiRender() {}
 		virtual void CursorPosCallback(GLFWwindow* window, double xpos, double ypos) {}
+		virtual void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {}
 	};
 
 	class TestMenu : public Test

@@ -4,13 +4,14 @@
 
 float Camera::yaw = 0.0f;
 float Camera::pitch = 0.0f;
+bool Camera::CursorDisabled = false;
 
 Camera::Camera(glm::mat4& View)
-	:m_cameraPos(0.0f, 0.0f, 300.0f),
+	:m_cameraPos(0.0f, 0.0f, 500.0f),
 	m_cameraFront(0.0f, 0.0f, -1.0f),
 	m_cameraUp(0.0f, 1.0f, 0.0f),
 	m_View(View),
-    m_IsCursorDisable(false)
+    fov(45.0f)
 {
     
 }
@@ -38,26 +39,16 @@ void Camera::CameraUpdate(float deltaTime)
         m_cameraPos -= glm::normalize(glm::cross(m_cameraFront, m_cameraUp)) * cameraMoveDistance;
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         m_cameraPos += glm::normalize(glm::cross(m_cameraFront, m_cameraUp)) * cameraMoveDistance;
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        m_cameraPos += cameraMoveDistance * m_cameraUp;
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        m_cameraPos -= cameraMoveDistance * m_cameraUp;
 
     glm::vec3 front;
     front.x = - cos(glm::radians(pitch)) * sin(glm::radians(yaw));
     front.y = sin(glm::radians(pitch));
     front.z = - cos(glm::radians(pitch)) * cos(glm::radians(yaw));
     m_cameraFront = glm::normalize(front);
-
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-    {
-        if (m_IsCursorDisable)
-        {
-            m_IsCursorDisable = false;
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        }
-        else
-        {
-            m_IsCursorDisable = true;
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-        }
-    }
 
     m_View = glm::lookAt(m_cameraPos, m_cameraPos + m_cameraFront, m_cameraUp);
 }
@@ -77,12 +68,37 @@ void Camera::CursorPosCallback(GLFWwindow* window, double xpos, double ypos)
 
         float sensitivity = 0.05f;
 
-        yaw += xoffset * sensitivity;
-        pitch += yoffset * sensitivity;
+        yaw -= xoffset * sensitivity;
+        pitch -= yoffset * sensitivity;
 
         if (pitch > 89.0f)
             pitch = 89.0f;
         if (pitch < -89.0f)
             pitch = -89.0f;
+    }
+}
+
+void Camera::KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    static bool keyESCpressed = false;
+
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS && !keyESCpressed)
+    {
+        if (Camera::CursorDisabled)
+        {
+            Camera::CursorDisabled = false;
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        }
+        else
+        {
+            Camera::CursorDisabled = true;
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        }
+
+        keyESCpressed = true;
+    }
+    else if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
+    {
+        keyESCpressed = false;
     }
 }

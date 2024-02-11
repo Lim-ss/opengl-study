@@ -18,7 +18,7 @@ namespace test {
 		TestTexture2D();
 		~TestTexture2D();
 
-		void OnUpdate(float deltaTime) override;
+		void OnUpdate(double deltaTime) override;
 		void OnRender() override;
 		void OnImguiRender() override;
 	private:

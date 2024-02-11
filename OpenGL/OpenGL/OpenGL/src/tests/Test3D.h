@@ -21,10 +21,11 @@ namespace test {
 		Test3D();
 		~Test3D();
 
-		void OnUpdate(float deltaTime) override;
+		void OnUpdate(double deltaTime) override;
 		void OnRender() override;
 		void OnImguiRender() override;
 		void CursorPosCallback(GLFWwindow* window, double xpos, double ypos) override;
+		void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) override;
 	private:
 
 		glm::mat4 m_Proj;
