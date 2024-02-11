@@ -25,6 +25,7 @@
 #include "TestClearColor.h"
 #include "TestTexture2D.h"
 #include "Test3D.h"
+#include "TestPoint.h"
 
 test::Test* currentTest = nullptr;
 
@@ -112,6 +113,7 @@ int main(void)
         testMenu->RegisterTest<test::TestClearColor>("Clear Color");
         testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
         testMenu->RegisterTest<test::Test3D>("Texture 3D");
+        testMenu->RegisterTest<test::TestPoint>("Draw Point");
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))

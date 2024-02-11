@@ -143,7 +143,7 @@ namespace test {
 
         ImGui::Text("Press ESC to disable the cursor");               
 
-        ImGui::SliderFloat("Translation", &m_Camera->fov, 30.0f, 120.0f);
+        ImGui::SliderFloat("fov", &m_Camera->fov, 30.0f, 120.0f);
 
         ImGui::Checkbox("Wireframe Mode", &m_IfWireframeMode);
 

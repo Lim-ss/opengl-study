@@ -28,4 +28,10 @@ public:
 			: position(0), color(0), textureCoordinate(0), textureID(0)
 		{}
 	};
+
+	struct point
+	{
+		glm::vec3 position;
+		glm::vec3 color;
+	};
 };

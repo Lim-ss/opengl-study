@@ -78,6 +78,9 @@
     <ClCompile Include="src\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\TestPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\TestTexture2D.shader" />
@@ -496,6 +499,7 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="res\shaders\Test3D.shader" />
+    <None Include="res\shaders\TestPoint.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1423,6 +1427,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
