@@ -20,6 +20,8 @@ imgui [ocornut/imgui: Dear ImGui: Bloat-free Graphical User interface for C++ wi
 
 glm [g-truc/glm: OpenGL Mathematics (GLM) (github.com)](https://github.com/g-truc/glm)
 
+OBJ-Loader [Bly7/OBJ-Loader: A C++ OBJ Model Loader that will parse .obj & .mtl Files into Indices, Vertices, Materials, and Mesh Structures. (github.com)](https://github.com/Bly7/OBJ-Loader)
+
 ##### 备注
 
 glew使用静态链接时需要加上预编译宏__GLEW_STATIC__
@@ -44,3 +46,12 @@ void CursorPosCallback(GLFWwindow* window, double xpos, double ypos)
 ~~~
 
 先把所有纹理加载完再进行纹理槽的绑定，因为加载纹理的时候在调用glBindTexture(GL_TEXTURE_2D, ID)之前不会调用GLCall(glActiveTexture(GL_TEXTURE0 + slot))，所以会把上一个绑定的纹理顶掉。
+
+用GL_POINTS画点的时候，需要先开启GL_PROGRAM_POINT_SIZE，才能在shader中指定点的大小，否则只能在CPU端的程序里统一设置一个大小，但开启之后不能再在CPU端设置大小。
+
+~~~c++
+glEnable(GL_PROGRAM_POINT_SIZE);
+//glPointSize(10.0f);//CPU端统一设置点的大小
+~~~
+
+obj-loader库有几个函数没有加inline导致重复定义，加上就好了

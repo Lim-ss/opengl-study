@@ -141,6 +141,7 @@
     <ClCompile Include="src\tests\Test.cpp" />
     <ClCompile Include="src\tests\Test3D.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\TestObjLoader.cpp" />
     <ClCompile Include="src\tests\TestPoint.cpp" />
     <ClCompile Include="src\tests\TestTexture2D.cpp" />
     <ClCompile Include="src\Texture.cpp" />
@@ -157,6 +158,7 @@
     <ClCompile Include="src\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\TestObjLoader.shader" />
     <None Include="res\shaders\TestPoint.shader" />
     <None Include="res\shaders\Test3D.shader" />
     <None Include="res\shaders\TestTexture2D.shader" />
@@ -307,6 +309,7 @@
     <ClInclude Include="src\tests\Test.h" />
     <ClInclude Include="src\tests\Test3D.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
+    <ClInclude Include="src\tests\TestObjLoader.h" />
     <ClInclude Include="src\tests\TestPoint.h" />
     <ClInclude Include="src\tests\TestTexture2D.h" />
     <ClInclude Include="src\Texture.h" />
@@ -606,6 +609,7 @@
     <ClInclude Include="src\vendor\imgui\imstb_rectpack.h" />
     <ClInclude Include="src\vendor\imgui\imstb_textedit.h" />
     <ClInclude Include="src\vendor\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\vendor\obj-loader\OBJ-Loader.h" />
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
     <ClInclude Include="src\VertexArray.h" />
     <ClInclude Include="src\VertexBuffer.h" />

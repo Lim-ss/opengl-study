@@ -26,6 +26,7 @@
 #include "TestTexture2D.h"
 #include "Test3D.h"
 #include "TestPoint.h"
+#include "TestObjLoader.h"
 
 test::Test* currentTest = nullptr;
 
@@ -114,6 +115,7 @@ int main(void)
         testMenu->RegisterTest<test::TestTexture2D>("Texture 2D");
         testMenu->RegisterTest<test::Test3D>("Texture 3D");
         testMenu->RegisterTest<test::TestPoint>("Draw Point");
+        testMenu->RegisterTest<test::TestObjLoader>("OBJ Loader");
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))

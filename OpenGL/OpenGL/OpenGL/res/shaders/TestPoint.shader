@@ -3,13 +3,15 @@
         
 layout(location = 0) in vec4 position;
 layout(location = 1) in vec3 color;
+layout(location = 2) in float size;
 
 out vec3 v_color;
 
 void main()
 {
+    v_color = color;
     gl_Position = position;
-    //gl_PointSize = 5.0;
+    gl_PointSize = size;
 };
 
 
@@ -22,5 +24,5 @@ in vec3 v_color;
 
 void main()
 {
-    f_color = vec4(1.0, 0.0, 0.0, 1.0);
+    f_color = vec4(v_color,1.0);
 };

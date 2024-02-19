@@ -1,2 +1,15 @@
-﻿  TestPoint.cpp
+﻿  TestObjLoader.cpp
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\vendor\obj-loader\OBJ-Loader.h(652,25): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'src/tests/TestObjLoader.cpp')
+  
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\vendor\obj-loader\OBJ-Loader.h(689,22): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'src/tests/TestObjLoader.cpp')
+  
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\vendor\obj-loader\OBJ-Loader.h(695,23): warning C4018: '<': signed/unsigned mismatch
+  (compiling source file 'src/tests/TestObjLoader.cpp')
+  
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\vendor\obj-loader\OBJ-Loader.h(949,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'src/tests/TestObjLoader.cpp')
+  
+C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\OpenGL\src\tests\TestObjLoader.cpp(60,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   OpenGL.vcxproj -> C:\Users\86134\Desktop\opengl-study\OpenGL\OpenGL\Debug\OpenGL.exe

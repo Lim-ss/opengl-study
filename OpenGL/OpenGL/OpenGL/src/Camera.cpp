@@ -7,13 +7,23 @@ float Camera::pitch = 0.0f;
 bool Camera::CursorDisabled = false;
 
 Camera::Camera(glm::mat4& View)
-	:m_cameraPos(0.0f, 0.0f, 500.0f),
+	:m_cameraPos(0.0f, 0.0f, 10.0f),
 	m_cameraFront(0.0f, 0.0f, -1.0f),
 	m_cameraUp(0.0f, 1.0f, 0.0f),
 	m_View(View),
     fov(45.0f)
 {
     
+}
+
+Camera::Camera(glm::mat4& View, glm::vec3 CameraPosition)
+    :m_cameraPos(CameraPosition),
+    m_cameraFront(0.0f, 0.0f, -1.0f),
+    m_cameraUp(0.0f, 1.0f, 0.0f),
+    m_View(View),
+    fov(45.0f)
+{
+
 }
 
 Camera::~Camera()
@@ -30,7 +40,7 @@ void Camera::CameraUpdate(float deltaTime)
 {
     GLFWwindow* window = glfwGetCurrentContext();
 
-    float cameraMoveDistance = 80.0f * deltaTime;
+    float cameraMoveDistance = 1.0f * deltaTime;
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         m_cameraPos += cameraMoveDistance * m_cameraFront;
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -45,9 +55,9 @@ void Camera::CameraUpdate(float deltaTime)
         m_cameraPos -= cameraMoveDistance * m_cameraUp;
 
     glm::vec3 front;
-    front.x = - cos(glm::radians(pitch)) * sin(glm::radians(yaw));
-    front.y = sin(glm::radians(pitch));
-    front.z = - cos(glm::radians(pitch)) * cos(glm::radians(yaw));
+    front.x = -cos(glm::radians(pitch)) * sin(glm::radians(yaw));
+    front.y =  sin(glm::radians(pitch));
+    front.z = -cos(glm::radians(pitch)) * cos(glm::radians(yaw));
     m_cameraFront = glm::normalize(front);
 
     m_View = glm::lookAt(m_cameraPos, m_cameraPos + m_cameraFront, m_cameraUp);

@@ -81,6 +81,9 @@
     <ClCompile Include="src\tests\TestPoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\TestObjLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\TestTexture2D.shader" />
@@ -500,6 +503,7 @@
     </None>
     <None Include="res\shaders\Test3D.shader" />
     <None Include="res\shaders\TestPoint.shader" />
+    <None Include="res\shaders\TestObjLoader.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1430,6 +1434,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\TestPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vendor\obj-loader\OBJ-Loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestObjLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -8,6 +8,7 @@
 class Camera {
 public:
 	Camera(glm::mat4& View);
+	Camera(glm::mat4& View, glm::vec3 CameraPosition);
 	~Camera();
 
 	void BindViewMatrix(glm::mat4& View);
